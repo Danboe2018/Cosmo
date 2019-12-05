@@ -15,11 +15,12 @@ const Article = (props) => {
     author,
     date,
     description,
-    index
+    index,
+    onPress
   } = props;
 
   return (
-    <TouchableOpacity style={style}>
+    <TouchableOpacity style={style} onPress={onPress}>
       <View>
         <Thumbnail
         url={imageUrl}

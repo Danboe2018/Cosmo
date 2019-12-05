@@ -1,9 +1,9 @@
 import React from 'react';
-import {Modal, TouchableOpacity, View} from 'react-native';
-import {WebView} from "react-native-webview";
+import { Modal, TouchableOpacity, View } from 'react-native';
+import { WebView } from "react-native-webview";
 import PropTypes from 'prop-types';
 import SmallText from '../SmallText';
-import {styles} from './styles';
+import { styles } from './styles';
 
 const NewsModal = (props) => {
   const {
@@ -27,7 +27,7 @@ const NewsModal = (props) => {
           <SmallText>Close</SmallText>
         </TouchableOpacity>
         <WebView
-          source={{ uri: isModalUrl}}
+          source={{ uri: isModalUrl }}
         />
       </View>
     </Modal>
