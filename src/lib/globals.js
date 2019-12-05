@@ -1,4 +1,12 @@
+import {Dimensions} from 'react-native';
+
+let {height, width} = Dimensions.get('window');
+
 module.exports = {
+  SCREEN_SIZE: {
+    width,
+    height
+  },
   COLORS: {
     PRIMARY: '#005679',
     SECONDARY: '#89C6E1',
@@ -7,13 +15,34 @@ module.exports = {
     BAR_COLOR: '#4E4D52',
     TEXT_COLOR: '#4E4E55',
     HEADER_TEXT_COLOR: '#FFFFFF',
-    LINK_COLOR: '#48E9D9'
+    LINK_COLOR: '#48E9D9',
+    MUTED_COLOR: '#8E8786'
+  },
+  LOGIN_TYPE: {
+    normal: 1,
+    touch: 2,
+    face: 3,
+  },
+  ASYNC_STORAGE_TYPE: {
+    userData: 'userData',
+    userSettings: 'userSettings',
+    deviceToken: 'deviceToken'
+  },
+  BUTTON_TYPE: {
+    loginButton: 1,
+    registerButton: 2,
+    signOutButton: 3
+  },
+  BUTTON_TITLE: {
+    loginTitle: 'SIGN IN',
+    registerTitle: 'REGISTER',
+    signOutTitle: 'SIGN OUT'
   },
   COMMON_STYLES: {
     pageContainer: {
-      backgroundColor: BG_COLOR,
+      backgroundColor: '#F4F4F6',
       marginTop: 0,
-      paddingTop: 20,
+      paddingTop: 0,
       marginHorizontal: 0,
       paddingHorizontal: 10
     },
