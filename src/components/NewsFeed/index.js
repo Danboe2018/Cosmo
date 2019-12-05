@@ -26,7 +26,7 @@ export default class NewFeed extends Component {
               style={styles.newItem}
               />
             )
-          });
+          })
         }
       </View>
     )
