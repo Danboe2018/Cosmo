@@ -1,4 +1,4 @@
-module.exports ={
+module.exports = {
   COLORS: {
     PRIMARY: '#005679',
     SECONDARY: '#89C6E1',
@@ -10,6 +10,13 @@ module.exports ={
     LINK_COLOR: '#48E9D9'
   },
   COMMON_STYLES: {
+    pageContainer: {
+      backgroundColor: BG_COLOR,
+      marginTop: 0,
+      paddingTop: 20,
+      marginHorizontal: 0,
+      paddingHorizontal: 10
+    },
     text: {
       color: '#E5DBDA',
       fontFamily: 'Helvetica Neue'
