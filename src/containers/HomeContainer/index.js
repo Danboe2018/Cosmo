@@ -30,7 +30,7 @@ const enhancer = compose(
       props.setIsNewsModalVisible(true)
       props.setIsModalUrl(url)
     },
-    onModalClose: props => {} => {
+    onModalClose: props => () => {
       props.setIsNewsModalVisible(false)
       props.setIsModalUrl(undefined)
     }
