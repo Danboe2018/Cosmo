@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import Article from '../Article';
@@ -7,22 +8,29 @@ import SmallText from '../SmallText';
 import { articles } from '../../lib/data';
 import { styles } from './styles';
 import * as globals from '../../lib/globals';
-import {myKey} from '../../lib/myKey';
-import {reshapeNewsData} from '../../lib/functions';
+import { myKey } from '../../lib/myKey';
+import { reshapeNewsData } from '../../lib/functions';
 
 export default class NewFeed extends Component {
   state = {
     isNewsModalVisible: false,
-    isModalUrl: undefined
+    isModalUrl: undefined,
+    dataSource: null,
+    isLoading: true
   };
 
-  componentDidMount(){
+  componentDidMount() {
     fetch(`https://api.nytimes.com/svc/topstories/v2/science.json?api-key=${myKey}`)
-    .then(response => response.json())
-    .then(res => {
-      // console.log('Here is our api data',res)
-      console.log('Here is the reshaped', reshapeNewsData(res.results))
-    })
+      .then(response => response.json())
+      .then(res => {
+        console.log('Here is our api data', res)
+        console.log('Here is the reshaped', reshapeNewsData(res.results))
+        this.setState({
+          isLoading: false,
+          dataSource: reshapeNewsData(res.results)
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   onModalOpen = (url) => {
@@ -40,11 +48,17 @@ export default class NewFeed extends Component {
   };
 
   render() {
-    console.log('This is our state', this.state);
+    if (this.state.isLoading) {
+      return (
+        <View style={globals.COMMON_STYLES.pageContainer}>
+          <ActivityIndicator />
+        </View>
+      )
+    }
     return (
       <View style={globals.COMMON_STYLES.pageContainer}>
         {
-          articles.map((article, index) => {
+          this.state.dataSource.map((article, index) => {
             return (
               <Article
                 key={index}
@@ -61,7 +75,7 @@ export default class NewFeed extends Component {
           })
         }
         <NewsModal
-          isNewsModalVisible= {this.state.isNewsModalVisible}
+          isNewsModalVisible={this.state.isNewsModalVisible}
           onModalClose={this.onModalClose}
           isModalUrl={this.state.isModalUrl}
         />
