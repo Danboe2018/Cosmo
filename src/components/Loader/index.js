@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, ActivityIndicator} from 'react-native';
-import {styles} from './styles';
+import { View, ActivityIndicator } from 'react-native';
+import { styles } from './styles';
 import * as globals from '../../lib/globals';
 
 const Loader = () => (
   <View style={styles.loader}>
-    <ActivityIndicator size="large" color={globals.COLORS.PRIMARY}/>
+    <ActivityIndicator size="large" color={globals.COLORS.PRIMARY} />
   </View>
 );
 

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { StatusBar, View, Text, Image, TouchableOpacity, Keyboard} from 'react-native';
+import { StatusBar, View, Text, Image, TouchableOpacity, Keyboard } from 'react-native';
 import globals from "../../lib/globals";
 import { images, styles } from "./styles";
 import { useNavigation } from "react-navigation-hooks";
@@ -15,12 +15,12 @@ const Header = (props) => {
 
   const onLeftMenuPress = () => {
     Keyboard.dismiss();
-    if(isBackButtonRequired)
+    if (isBackButtonRequired)
       goBack();
   };
 
   let headerStyle = styles.headerContainer;
-  if(customHeaderStyle)
+  if (customHeaderStyle)
     headerStyle = customHeaderStyle;
 
   return (
@@ -35,16 +35,16 @@ const Header = (props) => {
           <Image
             resizeMode="contain"
             source={images.backButtonImage}
-            style={{ alignItems: "stretch", marginTop: 50}} />
+            style={{ alignItems: "stretch", marginTop: 50 }} />
         </TouchableOpacity>
-      ) : null }
+      ) : null}
       <View style={styles.headerTitleContainer}>
         {
           isLogoRequired ? (
-            <Image source={images.logo} resizeMode="contain" style={{alignItems: "stretch"}}/>
+            <Image source={images.logo} resizeMode="contain" style={{ alignItems: "stretch" }} />
           ) : (
-            <Text style={styles.headerTitleText}>{headerTitle}</Text>
-          )
+              <Text style={styles.headerTitleText}>{headerTitle}</Text>
+            )
         }
       </View>
     </View>

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, TextInput, Keyboard} from 'react-native';
-import {styles} from './styles';
+import { View, TextInput, Keyboard } from 'react-native';
+import { styles } from './styles';
 import * as globals from '../../lib/globals';
 
-const Search = ({setSearchText, searchText}) => {
+const Search = ({ setSearchText, searchText }) => {
   return (
     <View style={styles.search}>
       <TextInput

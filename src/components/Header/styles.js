@@ -13,14 +13,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: globals.COLORS.PRIMARY
   },
-  leftIconContainer:{
-    marginTop:0,
+  leftIconContainer: {
+    marginTop: 0,
     paddingLeft: globals.SCREEN_SIZE.width <= 320 ? 8 : 15,
-    paddingRight:globals.SCREEN_SIZE.width <= 320 ? 8 : 15,
+    paddingRight: globals.SCREEN_SIZE.width <= 320 ? 8 : 15,
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    height : "100%",
+    height: "100%",
     left: 0
   },
   headerTitleContainer: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    height : "100%",
+    height: "100%",
   },
   headerTitleText: {
     textAlign: "center",
@@ -39,4 +39,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export { images, styles  };
+export { images, styles };

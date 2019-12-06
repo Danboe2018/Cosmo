@@ -1,15 +1,50 @@
-import { compose, hoistStatics, withHandlers, withState, lifecycle, withProps } from 'recompose';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { loadNews } from '../../redux/actions/newsActions';
-import { reshapeNewsData } from '../../lib/functions';
+import React, {useState, useEffect} from 'react';
+import {connect} from 'react-redux';
 import HomeView from './HomeView';
+import {bindActionCreators} from "redux";
+import {reshapeNewsData} from "../../lib/functions";
+import {loadNews} from "../../redux/actions/newsActions";
 
-const mapStateToProps = (state) => {
-  return {
-    news: reshapeNewsData(state.news)
-  }
+const HomeScreen = (props) => {
+
+  // State variables
+  const [isNewsModalVisible, setIsNewsModalVisible] = useState(false);
+  const [isModalUrl, setIsModalUrl] = useState(undefined);
+  const [searchText, setSearchText] = useState(null);
+
+  // Mounted
+  useEffect(() => handleComponentMounted(), []);
+
+  const handleComponentMounted = () => {
+    props.loadNews();
+  };
+
+  const onModalOpen = (url) => {
+    setIsNewsModalVisible(true);
+    setIsModalUrl(url);
+  };
+
+  const onModalClose = () => {
+    setIsNewsModalVisible(false);
+    setIsModalUrl(undefined);
+  };
+
+  return (
+    <HomeView
+      onModalOpen={onModalOpen}
+      isNewsModalVisible={isNewsModalVisible}
+      isModalUrl={isModalUrl}
+      onModalClose={onModalClose}
+      news={props.news}
+      searchText={searchText}
+      setSearchText={setSearchText}
+    />
+  )
 };
+
+const mapStateToProps = (state) => ({
+  news: reshapeNewsData(state.news)
+});
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
@@ -17,29 +52,9 @@ const mapDispatchToProps = (dispatch) => (
   }, dispatch)
 );
 
-const enhancer = compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  withState('isNewsModalVisible', 'setIsNewsModalVisible', false),
-  withState('isModalUrl', 'setIsModalUrl', undefined),
-  withState('isNewsModalVisibleSuccessful', 'setIsNewsModalVisibleSuccessful', false),
-  withProps(props => ({
-    news: props.news
-  })),
-  withHandlers({
-    onModalOpen: props => (url) => {
-      props.setIsNewsModalVisible(true)
-      props.setIsModalUrl(url)
-    },
-    onModalClose: props => () => {
-      props.setIsNewsModalVisible(false)
-      props.setIsModalUrl(undefined)
-    }
-  }),
-  lifecycle({
-    componentDidMount() {
-      this.props.loadNews();
-    }
-  })
-);
+const homeScreenWithRedux = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomeScreen);
 
-export default hoistStatics(enhancer)(HomeView);
+export default homeScreenWithRedux;

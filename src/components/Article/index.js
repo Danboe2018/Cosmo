@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, TouchableOpacity} from 'react-native';
-import {styles} from './styles';
+import { View, TouchableOpacity } from 'react-native';
+import { styles } from './styles';
 
 import Byline from '../Byline';
 import AppText from '../AppText';
@@ -23,9 +23,9 @@ const Article = (props) => {
     <TouchableOpacity style={style} onPress={onPress}>
       <View>
         <Thumbnail
-        url={imageUrl}
-        titleText={title}
-        style={styles.thumbnail}
+          url={imageUrl}
+          titleText={title}
+          style={styles.thumbnail}
         />
         <View style={styles.content}>
           <Byline

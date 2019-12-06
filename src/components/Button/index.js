@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {TouchableOpacity, Text} from 'react-native';
-import {styles} from './styles';
+import { TouchableOpacity, Text } from 'react-native';
+import { styles } from './styles';
 import * as globals from '../../lib/globals';
 
 const Button = (props) => {
@@ -28,11 +28,11 @@ const Button = (props) => {
     buttonTitleStyle.push(styles.signOutTitle);
 
     if (buttonSize) {
-      buttonStyle.push({borderRadius: buttonSize.height/2})
+      buttonStyle.push({ borderRadius: buttonSize.height / 2 })
     }
 
     if (buttonType === globals.BUTTON_TYPE.signOutButton) {
-      buttonStyle.push({marginLeft: 10, marginBottom: 10})
+      buttonStyle.push({ marginLeft: 10, marginBottom: 10 })
     }
   }
 

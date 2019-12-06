@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {View, Image} from 'react-native';
-import {styles, images} from './styles';
+import { View, Image } from 'react-native';
+import { styles, images } from './styles';
 
-const FooterIcon = ({tabBarIndex, isFocused}) => {
+const FooterIcon = ({ tabBarIndex, isFocused }) => {
   let tabBarImage;
 
-  if(parseInt(tabBarIndex) === 0) {
+  if (parseInt(tabBarIndex) === 0) {
     (isFocused)
       ? tabBarImage = images.newsIconSelected
       : tabBarImage = images.newsIconUnselected
@@ -18,7 +18,7 @@ const FooterIcon = ({tabBarIndex, isFocused}) => {
 
   return (
     <View style={styles.tabBarItem}>
-      <Image resizeMode='contain' source={tabBarImage}/>
+      <Image resizeMode='contain' source={tabBarImage} />
     </View>
   )
 };

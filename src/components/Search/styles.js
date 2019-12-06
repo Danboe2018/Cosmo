@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import * as globals from '../../lib/globals';
 
 const images = {
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export {images, styles};
+export { images, styles };
