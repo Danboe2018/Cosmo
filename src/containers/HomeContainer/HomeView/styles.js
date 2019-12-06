@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
-const images = { 
+const images = {
 
 };
 
@@ -13,4 +13,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export {images, styles};
+export { images, styles };

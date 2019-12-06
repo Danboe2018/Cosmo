@@ -1,6 +1,6 @@
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 
-let {height, width} = Dimensions.get('window');
+let { height, width } = Dimensions.get('window');
 
 module.exports = {
   SCREEN_SIZE: {
