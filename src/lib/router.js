@@ -1,6 +1,13 @@
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
+import React from 'react';
+import { Image } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import * as globals from '../lib/globals';
+
+const Logo = require('../assets/images/header/icn-logo.png');
+
+import FooterIcon from '../components/FooterIcon';
 
 // Home Tab screen
 import HomeScreen from '../containers/HomeView';
@@ -12,7 +19,15 @@ import ProfileScreen from '../containers/ProfileView';
 const HomeTab = createStackNavigator({
   Home: {
     screen: HomeScreen,
-    headerMode: 'screen'
+    headerMode: 'screen',
+    navigationOptions: () => ({
+      headerStyle: {
+        backgroundColor: globals.COLORS.PRIMARY
+      },
+      headerTitle: (
+        <Image source={Logo} />
+      )
+    })
   }
 });
 
@@ -25,11 +40,34 @@ const ProfileTab = createStackNavigator({
 });
 
 const DashboardTabRoutes = createBottomTabNavigator({
-  HomeTab: {
-    screen: HomeTab
+  Home: {
+    screen: HomeTab,
+    navigationOptions: ({ navigation }) => {
+      return {
+        tabBarIcon: ({ focused }) => {
+          return <FooterIcon tabBarIndex={0} isFocused={focused} />
+        }
+      }
+    }
   },
-  ProfileTab:{
-    screen: ProfileTab
+  Profile: {
+    screen: ProfileTab,
+    navigationOptions: ({ navigation }) => {
+      return {
+        tabBarIcon: ({ focused }) => {
+          return <FooterIcon tabBarIndex={1} isFocused={focused} />
+        }
+      }
+    }
+  }
+}, {
+  initialRouteName: 'Home',
+  tabBarOptions: {
+    style: {
+      height: 50,
+      paddingVertical: 5,
+      backgroundColor: globals.COLORS.white
+    }
   }
 });
 
