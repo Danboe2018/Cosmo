@@ -7,12 +7,19 @@ import SmallText from '../SmallText';
 import { articles } from '../../lib/data';
 import { styles } from './styles';
 import * as globals from '../../lib/globals';
+import {myKey} from '../../lib/myKey';
 
 export default class NewFeed extends Component {
   state = {
     isNewsModalVisible: false,
     isModalUrl: undefined
   };
+
+  componentDidMount(){
+    fetch(`https://api.nytimes.com/svc/topstories/v2/science.json?api-key=${myKey}`)
+    .then(response => response.json())
+    .then(res => console.log('Here is our api data',res))
+  }
 
   onModalOpen = (url) => {
     this.setState({
