@@ -28,7 +28,7 @@ export function doRegistration(params, loginType) {
           .then(userStorageData => {
             // if user settings does not exist do this
             if (userStorageData === null) {
-              let userSettings = {userID: response.data.userID};
+              let userSettings = { userID: response.data.userID };
               AsyncStorage.setItem(globals.ASYNC_STORAGE_TYPE.userSettings, JSON.stringify(userSettings));
               dispatch(loginServiceActionSuccess(response.data));
             } else {
@@ -36,7 +36,7 @@ export function doRegistration(params, loginType) {
               let userData = JSON.parse(userStorageData);
               // if settings NOT equal to response settings do this
               if (userData.userID !== response.data.userID) {
-                let userSettings = {userID: response.data.userID};
+                let userSettings = { userID: response.data.userID };
                 AsyncStorage.setItem(globals.ASYNC_STORAGE_TYPE.userSettings, JSON.stringify(userSettings));
                 dispatch(loginServiceActionSuccess(response.data))
               } else {
@@ -45,7 +45,7 @@ export function doRegistration(params, loginType) {
                   .then(userSettingsData => {
                     // if null set settings = to response
                     if (userSettingsData === null) {
-                      let userSettings = {userID: response.data.userID};
+                      let userSettings = { userID: response.data.userID };
                       AsyncStorage.setItem(globals.ASYNC_STORAGE_TYPE.userSettings, JSON.stringify(userSettings));
                     } else {
                       // if NOT null
@@ -80,7 +80,7 @@ export function doLogin(params, loginType) {
           .then(userStorageData => {
             // if user settings does not exist do this
             if (userStorageData === null) {
-              let userSettings = {userID: response.data.userID};
+              let userSettings = { userID: response.data.userID };
               AsyncStorage.setItem(globals.ASYNC_STORAGE_TYPE.userSettings, JSON.stringify(userSettings));
               dispatch(loginServiceActionSuccess(response.data));
             } else {
@@ -88,7 +88,7 @@ export function doLogin(params, loginType) {
               let userData = JSON.parse(userStorageData);
               // if settings NOT equal to response settings do this
               if (userData.userID !== response.data.userID) {
-                let userSettings = {userID: response.data.userID};
+                let userSettings = { userID: response.data.userID };
                 AsyncStorage.setItem(globals.ASYNC_STORAGE_TYPE.userSettings, JSON.stringify(userSettings));
                 dispatch(loginServiceActionSuccess(response.data))
               } else {
@@ -97,7 +97,7 @@ export function doLogin(params, loginType) {
                   .then(userSettingsData => {
                     // if null set settings = to response
                     if (userSettingsData === null) {
-                      let userSettings = {userID: response.data.userID};
+                      let userSettings = { userID: response.data.userID };
                       AsyncStorage.setItem(globals.ASYNC_STORAGE_TYPE.userSettings, JSON.stringify(userSettings));
                     } else {
                       // if NOT null
@@ -123,7 +123,7 @@ export function doLogin(params, loginType) {
   }
 }
 
-export function doLogout(resetNavigation:Function) {
+export function doLogout(resetNavigation: Function) {
   AsyncStorage.getItem(globals.ASYNC_STORAGE_TYPE.userData)
     .then(storageData => {
       if (storageData !== null) {
