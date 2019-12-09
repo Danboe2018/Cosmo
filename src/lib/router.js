@@ -10,7 +10,7 @@ const Logo = require('../assets/images/header/icn-logo.png');
 import FooterIcon from '../components/FooterIcon';
 
 // Auth tab screen
-import LoginView from '../containers/LoginContainer';
+import LoginScreen from '../containers/LoginContainer';
 
 // Home Tab screen
 import HomeScreen from '../containers/HomeContainer';
