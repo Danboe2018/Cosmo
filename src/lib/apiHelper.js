@@ -26,7 +26,7 @@ const apiHelper = {
     return baseUrl + loginApi
   },
   getRegisterApi: () => {
-    return baseUrl + loginApi
+    return baseUrl + registerApi
   }
 };
 

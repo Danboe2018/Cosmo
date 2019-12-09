@@ -17,7 +17,7 @@ const Email = (props) => {
             this.emailTextInput = input;
           }}
           onSubmitEditing={() => {
-            this.passwordTextInput.focus();
+            this.displayNameTextInput.focus();
           }}
           blurOnSubmit={false}
           value={email}

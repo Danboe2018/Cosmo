@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Keyboard, BackHandler } from 'react-native';
+import { Keyboard, BackHandler, TouchableOpacity, Text } from 'react-native';
 import NetInfo from "@react-native-community/netinfo";
 import * as globals from '../../lib/globals';
 import { connect } from 'react-redux';
@@ -9,15 +9,18 @@ import * as Actions from "../../redux/actions/loginActions";
 import * as functions from '../../lib/functions';
 import LoginView from './LoginView';
 
-const LoginScreen = (props) => {
+const RegisterScreen = (props) => {
   const { navigate } = useNavigation();
 
   const [email, setEmail] = useState(null);
+  const [displayName, setDisplayName] = useState(null);
   const [password, setPassword] = useState(null);
 
   const onLoginButtonPress = () => {
     if (!email) {
       functions.displayAlert(null, 'Enter Email.');
+    } else if (!displayName) {
+      functions.displayAlert(null, 'Enter Display Name.');
     } else if (!password) {
       functions.displayAlert(null, 'Enter Password.');
     } else {
@@ -26,18 +29,15 @@ const LoginScreen = (props) => {
         if (isConnected) {
           let apiParam = {
             'email': email,
+            'displayName': displayName,
             'password': password,
           };
-          props.doLogin(apiParam, globals.LOGIN_TYPE.normal);
+          props.doRegistration(apiParam, globals.LOGIN_TYPE.normal);
         } else {
           functions.displayAlert(null, 'No Network Connection');
         }
       });
     }
-  };
-
-  const onRegisterButtonPress = () => {
-    navigate('Register', { 'fromScreen': 'Login' })
   };
 
   return (
@@ -46,8 +46,9 @@ const LoginScreen = (props) => {
       setEmail={setEmail}
       password={password}
       setPassword={setPassword}
+      displayName={displayName}
+      setDisplayName={setDisplayName}
       onLoginButtonPress={onLoginButtonPress}
-      onRegisterButtonPress={onRegisterButtonPress}
     />
   )
 };
@@ -58,8 +59,6 @@ const mapStateToProps = (state, props) => {
     isLoginServiceLoading: state.loginReducer.isLoading,
     apiError: state.loginReducer.error,
     apiSuccess: state.loginReducer.success,
-    isPinRequired: state.loginReducer.isPinRequired,
-    isAppVersionError: state.loginReducer.isAppVersionError,
     deviceID: state.loginReducer.deviceID,
     isSessionExpired: state.loginReducer.isSessionExpired
   }
@@ -67,7 +66,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    doLogin: Actions.doLogin,
+    doRegistration: Actions.doRegistration,
     resetLoginErrorMessage: Actions.resetLoginErrorMessage,
     enableLogin: Actions.enableLogin
   }, dispatch)
@@ -76,10 +75,15 @@ const mapDispatchToProps = (dispatch) => {
 const loginWithRedux = connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginScreen);
+)(RegisterScreen);
 
 loginWithRedux.navigationOptions = ({ navigation }) => ({
-  header: null
+  header: true,
+  headerLeft: (
+    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+      <Text style={{ fontSize: 16, marginLeft: 15, color: 'white' }}>Back</Text>
+    </TouchableOpacity>
+  )
 });
 
 export default loginWithRedux;

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Image } from 'react-native';
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+import {
+  createBottomTabNavigator,
+  createStackNavigator,
+  createAppContainer
+} from 'react-navigation';
 import * as globals from '../lib/globals';
 
 const Logo = require('../assets/images/header/icn-logo.png');
@@ -10,12 +12,13 @@ const Logo = require('../assets/images/header/icn-logo.png');
 import FooterIcon from '../components/FooterIcon';
 
 // Auth tab screen
-import LoginScreen from '../containers/LoginContainer';
+import LoginScreen from "../containers/LoginContainer";
+import RegisterScreen from "../containers/RegisterContainer";
 
-// Home Tab screen
+// Home tab screen
 import HomeScreen from '../containers/HomeContainer';
 
-// Profile Tab Screen
+// Profile tab screen
 import ProfileScreen from '../containers/ProfileContainer';
 
 // Home tab stack
@@ -69,7 +72,7 @@ const DashboardTabRoutes = createBottomTabNavigator({
     style: {
       height: 50,
       paddingVertical: 5,
-      backgroundColor: globals.COLORS.white
+      backgroundColor: '#FFFFFF'
     }
   }
 });
@@ -79,6 +82,15 @@ const AuthTabRoutes = createStackNavigator({
   Login: {
     screen: LoginScreen,
     headerMode: 'screen'
+  },
+  Register: {
+    screen: RegisterScreen,
+    headerMode: 'screen'
+  }
+}, {
+  headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false
   }
 });
 
