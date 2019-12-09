@@ -23,8 +23,8 @@ export default class NewFeed extends Component {
     fetch(`https://api.nytimes.com/svc/topstories/v2/science.json?api-key=${myKey}`)
       .then(response => response.json())
       .then(res => {
-        console.log('Here is our api data', res)
-        console.log('Here is the reshaped', reshapeNewsData(res.results))
+        // console.log('Here is our api data', res)
+        // console.log('Here is the reshaped', reshapeNewsData(res.results))
         this.setState({
           isLoading: false,
           dataSource: reshapeNewsData(res.results)
