@@ -1,10 +1,8 @@
 import React from 'react';
 import { Image } from 'react-native';
-import {
-  createBottomTabNavigator,
-  createStackNavigator,
-  createAppContainer
-} from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
 import * as globals from '../lib/globals';
 
 const Logo = require('../assets/images/header/icn-logo.png');

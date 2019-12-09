@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { styles } from "../styles";
-import { TextInput, View } from "react-native";
+import { View, TextInput } from 'react-native';
+import { styles } from "../styles"
 
 const DisplayName = (props) => {
   const {
@@ -12,9 +12,7 @@ const DisplayName = (props) => {
   return (
     <View style={styles.inputContainer}>
       <View style={styles.inputInnerContainer}>
-        <TextInput
-          style={styles.inputText}
-          placeholder={'Display name'}
+        <TextInput style={styles.inputText} placeholder={'Display name'}
           ref={input => {
             this.displayNameTextInput = input;
           }}
@@ -25,10 +23,8 @@ const DisplayName = (props) => {
           value={displayName}
           autoCapitalize='none'
           onChangeText={(text) => setDisplayName(text)}
-          placeholderTextColor={'#FFFFFF'}
-          clearButtonMode="while-editing"
-          returnKeyType={"next"}
-        >
+          placeholderTextColor={'#FFFFFF'} clearButtonMode="while-editing"
+          returnKeyType={"next"}>
         </TextInput>
 
       </View>
