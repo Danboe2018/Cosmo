@@ -54,7 +54,9 @@ RegisterView.propTypes = {
   onRegisterButtonPress: PropTypes.func,
   email: PropTypes.string,
   password: PropTypes.string,
+  displayName: PropTypes.string,
   setEmail: PropTypes.func.isRequired,
+  setDisplayName: PropTypes.func.isRequired,
   setPassword: PropTypes.func.isRequired,
   isLoginServiceLoading: PropTypes.bool
 };
